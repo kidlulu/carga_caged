@@ -343,6 +343,7 @@ create table dbo.tmp
 
 BULK INSERT dbo.tmp FROM '\\10.73.7.86\tmp_spss\caged\CAGEDEST_052018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
 BULK INSERT dbo.tmp FROM '\\10.73.7.86\tmp_spss\caged\CAGEDEST_062018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT dbo.tmp FROM '\\10.73.7.86\tmp_spss\caged\CAGEDEST_072018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
 
 insert into caged.caged_des_200701_atual
 SELECT
@@ -451,10 +452,12 @@ SELECT
 FROM dbo.tmp
 where SUBSTRING(municipio,1,2) = '53';
 
+IF OBJECT_ID('dbo.tmp', 'U') IS NOT NULL DROP TABLE dbo.tmp; 
+
 select
   competenciadeclarada,
   sum(saldomov) as saldomov
 from caged.caged_des_200701_atual 
 group by competenciadeclarada 
-order by competenciadeclarada;
+order by competenciadeclarada desc;
 
