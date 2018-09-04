@@ -447,8 +447,8 @@ SELECT
      when replace(ibgesubsetor,' ','') = '24' then 'Administraçao pública direta e autárquica'
      when replace(ibgesubsetor,' ','') = '25' then 'Agricultura, silvicultura, criaçao de animais, ex'
   end as ibgesubsetordesc,
-  cast(null as int) as indtrabparcial,
-  cast(null as int) as indtrabintermitente
+  cast(indtrabparcial as int) as indtrabparcial,
+  cast(indtrabintermitente as int) as indtrabintermitente
 FROM dbo.tmp
 where SUBSTRING(municipio,1,2) = '53';
 
