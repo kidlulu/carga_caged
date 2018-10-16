@@ -162,6 +162,7 @@ SELECT
    cbo1994ocupacao AS cbo1994ocupacao,
    cbo2002ocupacao AS cbo2002ocupacao,
    cnae10classe AS cnae10classe,
+   cnae20subclas AS cnae20subclas,
    CAST(faixaempriniciojan AS INT) AS faixaempriniciojan,
    case when substring(grauinstrucao,1,1) = '{' then 99 else CAST(grauinstrucao AS INT) end AS grauinstrucao,
    CAST(qtdhoracontrat AS INT) AS qtdhoracontrat,
@@ -258,9 +259,9 @@ into caged.cagedFP_des_200701_atual
 FROM dbo.tmp
 where SUBSTRING(municipio,1,2) = '53';
 
-IF OBJECT_ID('dbo.tmp', 'U') IS NOT NULL DROP TABLE dbo.tmp; 
+IF OBJECT_ID('dbo.tmp2', 'U') IS NOT NULL DROP TABLE dbo.tmp2; 
 
-create table dbo.tmp
+create table dbo.tmp2
 (
 admitidosdesligados	varchar(max),
 competenciamovimentacao	varchar(max),
@@ -308,10 +309,10 @@ indtrabparcial varchar(max),
 indtrabintermitente varchar(max)
 );
 
-BULK INSERT dbo.tmp FROM '\\10.73.7.86\tmp_spss\caged\CAGEDEST_AJUSTES_052018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\10.73.7.86\tmp_spss\caged\CAGEDEST_AJUSTES_062018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\10.73.7.86\tmp_spss\caged\CAGEDEST_AJUSTES_072018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\10.73.7.86\tmp_spss\caged\CAGEDEST_AJUSTES_082018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT dbo.tmp2 FROM '\\10.73.7.86\tmp_spss\caged\CAGEDEST_AJUSTES_052018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT dbo.tmp2 FROM '\\10.73.7.86\tmp_spss\caged\CAGEDEST_AJUSTES_062018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT dbo.tmp2 FROM '\\10.73.7.86\tmp_spss\caged\CAGEDEST_AJUSTES_072018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT dbo.tmp2 FROM '\\10.73.7.86\tmp_spss\caged\CAGEDEST_AJUSTES_082018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
 
 insert into caged.cagedFP_des_200701_atual
 SELECT
@@ -322,6 +323,7 @@ SELECT
    cbo1994ocupacao AS cbo1994ocupacao,
    cbo2002ocupacao AS cbo2002ocupacao,
    cnae10classe AS cnae10classe,
+   cnae20subclas AS cnae20subclas,
    CAST(faixaempriniciojan AS INT) AS faixaempriniciojan,
    case when substring(grauinstrucao,1,1) = '{' then 99 else CAST(grauinstrucao AS INT) end AS grauinstrucao,
    CAST(qtdhoracontrat AS INT) AS qtdhoracontrat,
@@ -414,7 +416,7 @@ SELECT
   end as ibgesubsetordesc,
   cast(indtrabparcial as int) as indtrabparcial,
   cast(indtrabintermitente as int) as indtrabintermitente
-FROM dbo.tmp
+FROM dbo.tmp2
 where SUBSTRING(municipio,1,2) = '53';
 
 IF OBJECT_ID('dbo.tmp', 'U') IS NOT NULL DROP TABLE dbo.tmp; 
@@ -426,3 +428,10 @@ from caged.cagedFP_des_200701_atual
 group by competenciamovimentacao 
 order by competenciamovimentacao desc;
 
+select
+  competenciadeclarada,
+  sum(CAST(saldomov AS INT)) as saldomov
+from dbo.tmp2
+where SUBSTRING(municipio,1,2) = '53'
+group by competenciadeclarada
+order by competenciadeclarada desc;
