@@ -138,3 +138,4 @@
 "c:\Program Files\7-Zip\7z.exe" e -y CAGEDEST_052018.7z
 "c:\Program Files\7-Zip\7z.exe" e -y CAGEDEST_062018.7z
 "c:\Program Files\7-Zip\7z.exe" e -y CAGEDEST_072018.7z
+"c:\Program Files\7-Zip\7z.exe" e -y CAGEDEST_082018.7z
