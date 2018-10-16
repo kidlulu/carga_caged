@@ -344,6 +344,7 @@ create table dbo.tmp
 BULK INSERT dbo.tmp FROM '\\10.73.7.86\tmp_spss\caged\CAGEDEST_052018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
 BULK INSERT dbo.tmp FROM '\\10.73.7.86\tmp_spss\caged\CAGEDEST_062018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
 BULK INSERT dbo.tmp FROM '\\10.73.7.86\tmp_spss\caged\CAGEDEST_072018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT dbo.tmp FROM '\\10.73.7.86\tmp_spss\caged\CAGEDEST_082018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
 
 insert into caged.caged_des_200701_atual
 SELECT
@@ -461,3 +462,4 @@ from caged.caged_des_200701_atual
 group by competenciadeclarada 
 order by competenciadeclarada desc;
 
+select top 10 * from caged.caged_des_200701_atual
