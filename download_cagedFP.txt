@@ -105,3 +105,5 @@ wget ftp://ftp.mtps.gov.br/pdet/microdados/CAGED_AJUSTES/2018/CAGEDEST_AJUSTES_0
 wget ftp://ftp.mtps.gov.br/pdet/microdados/CAGED_AJUSTES/2018/CAGEDEST_AJUSTES_062018.7z
 wget ftp://ftp.mtps.gov.br/pdet/microdados/CAGED_AJUSTES/2018/CAGEDEST_AJUSTES_072018.7z
 wget ftp://ftp.mtps.gov.br/pdet/microdados/CAGED_AJUSTES/2018/CAGEDEST_AJUSTES_082018.7z
+wget ftp://ftp.mtps.gov.br/pdet/microdados/CAGED_AJUSTES/2018/CAGEDEST_AJUSTES_092018.7z
+wget ftp://ftp.mtps.gov.br/pdet/microdados/CAGED_AJUSTES/2018/CAGEDEST_AJUSTES_102018.7z
