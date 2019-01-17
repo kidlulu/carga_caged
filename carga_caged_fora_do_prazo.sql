@@ -471,6 +471,7 @@ indtrabintermitente varchar(max)
 
 BULK INSERT dbo.tmp2 FROM '\\10.73.7.86\tmp_spss\caged\CAGEDEST_AJUSTES_092018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
 BULK INSERT dbo.tmp2 FROM '\\10.73.7.86\tmp_spss\caged\CAGEDEST_AJUSTES_102018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT dbo.tmp2 FROM '\\10.73.7.86\tmp_spss\caged\CAGEDEST_AJUSTES_112018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
 
 insert into caged.cagedFP_des_200701_atual
 SELECT
