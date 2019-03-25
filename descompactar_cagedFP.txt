@@ -104,3 +104,9 @@
 "c:\Program Files\7-Zip\7z.exe" e -y CAGEDEST_AJUSTES_052018.7z
 "c:\Program Files\7-Zip\7z.exe" e -y CAGEDEST_AJUSTES_062018.7z
 "c:\Program Files\7-Zip\7z.exe" e -y CAGEDEST_AJUSTES_072018.7z
+"c:\Program Files\7-Zip\7z.exe" e -y CAGEDEST_AJUSTES_082018.7z
+"c:\Program Files\7-Zip\7z.exe" e -y CAGEDEST_AJUSTES_092018.7z
+"c:\Program Files\7-Zip\7z.exe" e -y CAGEDEST_AJUSTES_102018.7z
+"c:\Program Files\7-Zip\7z.exe" e -y CAGEDEST_AJUSTES_112018.7z
+"c:\Program Files\7-Zip\7z.exe" e -y CAGEDEST_AJUSTES_122018.7z
+"c:\Program Files\7-Zip\7z.exe" e -y CAGEDEST_AJUSTES_012019.7z
