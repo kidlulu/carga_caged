@@ -1,9 +1,9 @@
 ﻿USE DB_CODEPLAN
 GO
 
-IF OBJECT_ID('dbo.tmp', 'U') IS NOT NULL DROP TABLE dbo.tmp; 
+IF OBJECT_ID('caged.tmp', 'U') IS NOT NULL DROP TABLE caged.tmp; 
 
-create table dbo.tmp
+create table caged.tmp
 (
   admitidosdesligados varchar(max),
   competenciadeclarada varchar(max),
@@ -47,142 +47,142 @@ create table dbo.tmp
   subregiaosenaipr varchar(max)
   );
 
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGED_062012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST092015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST102015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122007.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122008.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122009.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122010.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122011.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGED_062012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122012.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122013.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122014.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST092015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST102015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122015.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122016.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122017.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
 
 IF OBJECT_ID('caged.caged_des_200701_atual', 'U') IS NOT NULL DROP TABLE caged.caged_des_200701_atual; 
 
@@ -293,12 +293,12 @@ SELECT
   cast(null as int) as indtrabparcial,
   cast(null as int) as indtrabintermitente
 into caged.caged_des_200701_atual
-FROM dbo.tmp
+FROM caged.tmp
 where SUBSTRING(municipio,1,2) = '53';
 
-IF OBJECT_ID('dbo.tmp', 'U') IS NOT NULL DROP TABLE dbo.tmp; 
+IF OBJECT_ID('caged.tmp', 'U') IS NOT NULL DROP TABLE caged.tmp; 
 
-create table dbo.tmp
+create table caged.tmp
 (
   admitidosdesligados varchar(max),
   competenciadeclarada varchar(max),
@@ -344,17 +344,19 @@ create table dbo.tmp
   indtrabintermitente varchar(max)
   );
 
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012019.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022019.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
-BULK INSERT dbo.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032019.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_062018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_072018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_082018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122018.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_012019.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_022019.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_032019.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_042019.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_052019.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
 
 insert into caged.caged_des_200701_atual
 SELECT
@@ -463,10 +465,10 @@ SELECT
   end as ibgesubsetordesc,
   cast(indtrabparcial as int) as indtrabparcial,
   cast(indtrabintermitente as int) as indtrabintermitente
-FROM dbo.tmp
+FROM caged.tmp
 where SUBSTRING(municipio,1,2) = '53';
 
-IF OBJECT_ID('dbo.tmp', 'U') IS NOT NULL DROP TABLE dbo.tmp; 
+IF OBJECT_ID('caged.tmp', 'U') IS NOT NULL DROP TABLE caged.tmp; 
 
 select
   competenciadeclarada,
