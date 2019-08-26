@@ -148,3 +148,4 @@ wget ftp://ftp.mtps.gov.br/pdet/microdados/CAGED/2019/CAGEDEST_032019.7z
 wget ftp://ftp.mtps.gov.br/pdet/microdados/CAGED/2019/CAGEDEST_042019.7z
 wget ftp://ftp.mtps.gov.br/pdet/microdados/CAGED/2019/CAGEDEST_052019.7z
 wget ftp://ftp.mtps.gov.br/pdet/microdados/CAGED/2019/CAGEDEST_062019.7z
+wget ftp://ftp.mtps.gov.br/pdet/microdados/CAGED/2019/CAGEDEST_072019.7z
