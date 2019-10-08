@@ -46,6 +46,8 @@ CREATE TABLE caged_id.tmp(
 	indtrabintermitente	varchar(max) null
 ) ON [PRIMARY] GO
 
+BULK INSERT caged_id.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\CAGED_ID\2019\CAGED_TRABALHADOR_AJUSTADO_082019.txt' WITH (FIELDTERMINATOR=';',FIRSTROW=2, codepage=1252) GO
+
 BULK INSERT caged_id.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\CAGED_ID\2019\CAGED_TRABALHADOR_AJUSTADO_072019.txt' WITH (FIELDTERMINATOR=';',FIRSTROW=2, codepage=1252) GO
 
 BULK INSERT caged_id.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\CAGED_ID\2019\CAGED_TRABALHADOR_AJUSTADO_062019.txt' WITH (FIELDTERMINATOR=';',FIRSTROW=2, codepage=1252) GO
