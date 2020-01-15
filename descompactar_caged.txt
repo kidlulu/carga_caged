@@ -152,3 +152,5 @@
 "c:\Program Files\7-Zip\7z.exe" e -y CAGEDEST_072019.7z
 "c:\Program Files\7-Zip\7z.exe" e -y CAGEDEST_082019.7z
 "c:\Program Files\7-Zip\7z.exe" e -y CAGEDEST_092019.7z
+"c:\Program Files\7-Zip\7z.exe" e -y CAGEDEST_102019.7z
+"c:\Program Files\7-Zip\7z.exe" e -y CAGEDEST_112019.7z
