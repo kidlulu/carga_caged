@@ -363,6 +363,7 @@ BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDES
 BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_092019.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
 BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_102019.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
 BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_112019.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
+BULK INSERT caged.tmp FROM '\\320CDL415.codeplandf.gdfnet.df\carga\caged\CAGEDEST_122019.txt' WITH (FIELDTERMINATOR=';',  FIRSTROW=2);
 
 insert into caged.caged_des_200701_atual
 SELECT
