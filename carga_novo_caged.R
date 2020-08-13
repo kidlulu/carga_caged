@@ -1,5 +1,5 @@
 getwd()
-setwd('//10.73.53.224/carga/ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Estabelecimentos/Maio/')
+setwd('D:/carga/ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Estabelecimentos/Junho/')
 library(DBI)
 library(odbc)
 library(tidyverse)
@@ -26,21 +26,27 @@ CAGEDESTAB202004 <- data.table::fread('CAGEDESTAB202004.txt',
 CAGEDESTAB202005 <- data.table::fread('CAGEDESTAB202005.txt',
                                       encoding=readr::guess_encoding('CAGEDESTAB202005.txt')[[1,1]])
 
+CAGEDESTAB202006 <- data.table::fread('CAGEDESTAB202006.txt',
+                                      encoding=readr::guess_encoding('CAGEDESTAB202005.txt')[[1,1]])
+
 CAGEDESTAB <- dplyr::bind_rows(CAGEDESTAB202001,
                                CAGEDESTAB202002,
                                CAGEDESTAB202003,
                                CAGEDESTAB202004,
-                               CAGEDESTAB202005) %>% 
+                               CAGEDESTAB202005,
+                               CAGEDESTAB202006) %>% 
               dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao",
                                         "subclasse","admitidos","desligados","fonte_desl",
-                                        "saldo","tipoempregador","tipoestabelecimento")))
+                                        "saldo","tipoempregador","tipoestabelecimento",
+                                        "tamestabjan")))
 
 
 rm(CAGEDESTAB202001,
    CAGEDESTAB202002,
    CAGEDESTAB202003,
    CAGEDESTAB202004,
-   CAGEDESTAB202005)
+   CAGEDESTAB202005,
+   CAGEDESTAB202006)
 
 
 x <- data.frame(type=sapply(CAGEDESTAB, class),
@@ -111,8 +117,7 @@ DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_municipio] ON [caged].[caged_
 
 rm(CAGEDESTAB,columnTypes,x)
 
-
-setwd('//10.73.53.224/carga/ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Movimentacoes/2020/Maio/')
+setwd('D:/carga/ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Movimentacoes/2020/Junho/')
 
 getwd()
 
@@ -131,18 +136,28 @@ CAGEDMOV202004 <- data.table::fread('CAGEDMOV202004.txt',
 CAGEDMOV202005 <- data.table::fread('CAGEDMOV202005.txt',
                                     encoding=readr::guess_encoding('CAGEDMOV202001.txt')[[1,1]])
 
+CAGEDMOV202006 <- data.table::fread('CAGEDMOV202006.txt',
+                                    encoding=readr::guess_encoding('CAGEDMOV202001.txt')[[1,1]])
+
 CAGEDMOV <- dplyr::bind_rows(CAGEDMOV202001,
                              CAGEDMOV202002,
                              CAGEDMOV202003,
                              CAGEDMOV202004,
-                             CAGEDMOV202005) %>% 
-            dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao","subclasse","saldomovimentacao","categoria","cbo2002ocupacao","graudeinstrucao","idade","sexo","tipoempregador","tipoestabelecimento","tipomovimentacao","indtrabintermitente","indtrabparcial","salario","horascontratuais","tipodedeficiencia","racacor","indicadoraprendiz","fonte")))
+                             CAGEDMOV202005,
+                             CAGEDMOV202006) %>% 
+            dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao","subclasse",
+                                      "saldomovimentacao","cbo2002ocupacao","categoria","graudeinstrucao",
+                                      "idade","horascontratuais","racacor","sexo","tipoempregador",
+                                      "tipoestabelecimento","tipomovimentacao","tipodedeficiencia",
+                                      "indtrabintermitente","indtrabparcial","salario","tamestabjan",
+                                      "indicadoraprendiz","fonte")))
 
 rm(CAGEDMOV202001,
    CAGEDMOV202002,
    CAGEDMOV202003,
    CAGEDMOV202004,
-   CAGEDMOV202005)
+   CAGEDMOV202005,
+   CAGEDMOV202006)
 
 ftable(CAGEDMOV$fonte)
 
