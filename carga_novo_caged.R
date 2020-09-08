@@ -1,5 +1,5 @@
 getwd()
-setwd('D:/carga/ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Estabelecimentos/Junho/')
+setwd('D:/carga/ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Estabelecimentos/Julho')
 library(DBI)
 library(odbc)
 library(tidyverse)
@@ -27,14 +27,18 @@ CAGEDESTAB202005 <- data.table::fread('CAGEDESTAB202005.txt',
                                       encoding=readr::guess_encoding('CAGEDESTAB202005.txt')[[1,1]])
 
 CAGEDESTAB202006 <- data.table::fread('CAGEDESTAB202006.txt',
-                                      encoding=readr::guess_encoding('CAGEDESTAB202005.txt')[[1,1]])
+                                      encoding=readr::guess_encoding('CAGEDESTAB202006.txt')[[1,1]])
+
+CAGEDESTAB202007 <- data.table::fread('CAGEDESTAB202007.txt',
+                                      encoding=readr::guess_encoding('CAGEDESTAB202007.txt')[[1,1]])
 
 CAGEDESTAB <- dplyr::bind_rows(CAGEDESTAB202001,
                                CAGEDESTAB202002,
                                CAGEDESTAB202003,
                                CAGEDESTAB202004,
                                CAGEDESTAB202005,
-                               CAGEDESTAB202006) %>% 
+                               CAGEDESTAB202006,
+                               CAGEDESTAB202007) %>% 
               dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao",
                                         "subclasse","admitidos","desligados","fonte_desl",
                                         "saldo","tipoempregador","tipoestabelecimento",
@@ -46,7 +50,8 @@ rm(CAGEDESTAB202001,
    CAGEDESTAB202003,
    CAGEDESTAB202004,
    CAGEDESTAB202005,
-   CAGEDESTAB202006)
+   CAGEDESTAB202006,
+   CAGEDESTAB202007)
 
 
 x <- data.frame(type=sapply(CAGEDESTAB, class),
@@ -117,7 +122,7 @@ DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_municipio] ON [caged].[caged_
 
 rm(CAGEDESTAB,columnTypes,x)
 
-setwd('D:/carga/ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Movimentacoes/2020/Junho/')
+setwd('D:/carga/ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Movimentacoes/2020/Julho/')
 
 getwd()
 
@@ -128,23 +133,27 @@ CAGEDMOV202002 <- data.table::fread('CAGEDMOV202002.txt',
                                     encoding=readr::guess_encoding('CAGEDMOV202001.txt')[[1,1]])
 
 CAGEDMOV202003 <- data.table::fread('CAGEDMOV202003.txt',
-                                    encoding=readr::guess_encoding('CAGEDMOV202001.txt')[[1,1]])
+                                    encoding=readr::guess_encoding('CAGEDMOV202003.txt')[[1,1]])
 
 CAGEDMOV202004 <- data.table::fread('CAGEDMOV202004.txt',
-                                    encoding=readr::guess_encoding('CAGEDMOV202001.txt')[[1,1]])
+                                    encoding=readr::guess_encoding('CAGEDMOV202004.txt')[[1,1]])
 
 CAGEDMOV202005 <- data.table::fread('CAGEDMOV202005.txt',
-                                    encoding=readr::guess_encoding('CAGEDMOV202001.txt')[[1,1]])
+                                    encoding=readr::guess_encoding('CAGEDMOV202005.txt')[[1,1]])
 
 CAGEDMOV202006 <- data.table::fread('CAGEDMOV202006.txt',
-                                    encoding=readr::guess_encoding('CAGEDMOV202001.txt')[[1,1]])
+                                    encoding=readr::guess_encoding('CAGEDMOV202006.txt')[[1,1]])
+
+CAGEDMOV202007 <- data.table::fread('CAGEDMOV202007.txt',
+                                    encoding=readr::guess_encoding('CAGEDMOV202007.txt')[[1,1]])
 
 CAGEDMOV <- dplyr::bind_rows(CAGEDMOV202001,
                              CAGEDMOV202002,
                              CAGEDMOV202003,
                              CAGEDMOV202004,
                              CAGEDMOV202005,
-                             CAGEDMOV202006) %>% 
+                             CAGEDMOV202006,
+                             CAGEDMOV202007) %>% 
             dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao","subclasse",
                                       "saldomovimentacao","cbo2002ocupacao","categoria","graudeinstrucao",
                                       "idade","horascontratuais","racacor","sexo","tipoempregador",
@@ -157,7 +166,8 @@ rm(CAGEDMOV202001,
    CAGEDMOV202003,
    CAGEDMOV202004,
    CAGEDMOV202005,
-   CAGEDMOV202006)
+   CAGEDMOV202006,
+   CAGEDMOV202007)
 
 ftable(CAGEDMOV$fonte)
 
