@@ -1,11 +1,11 @@
 #Orientações para carga
 #1 - Em um terminal linux, acesse a pasta onde serão salvos os microdados (cd /mnt/d/carga)
-#2 - Execute o comando wget -r ftp://ftp.mtps.gov.br/pdet/microdados/NOVO%20CAGED/
+#2 - Execute o comando wget -r -l0 --no-parent -A.7z ftp://ftp.mtps.gov.br/pdet/microdados/NOVO%20CAGED/
 #3 - Acesse a estrutura de pastas baixadas. Observe se há alguma pasta/arquivo com caracter não identificado. Se houver corrija
 #4 - Atualize a programação abaixo para o último mês e execute
 
 getwd()
-setwd('D:/carga/ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Estabelecimentos/Outubro/')
+setwd('D:/carga/ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Estabelecimentos/Novembro/')
 library(DBI)
 library(odbc)
 library(tidyverse)
@@ -134,6 +134,19 @@ CAGEDESTAB <- data.table::fread('CAGEDESTAB202010.txt',
 
 DBI::dbWriteTable(db,"caged_est_202001_atual",CAGEDESTAB,append = TRUE, field.types = columnTypes)
 
+CAGEDESTAB <- data.table::fread('CAGEDESTAB202011.txt',
+                                encoding=readr::guess_encoding('CAGEDESTAB202011.txt')[[1,1]]) %>%
+   dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao",
+                             "subclasse","admitidos","desligados","fonte_desl",
+                             "saldo","tipoempregador","tipoestabelecimento",
+                             "tamestabjan")))
+
+DBI::dbWriteTable(db,"caged_est_202001_atual",CAGEDESTAB,append = TRUE, field.types = columnTypes)
+
+
+
+
+
 DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_competencia] ON [caged].[caged_est_202001_atual]
                     ([competencia] ASC
                     )WITH (PAD_INDEX = OFF, 
@@ -193,7 +206,7 @@ rm(CAGEDESTAB)
 
 
 
-setwd('D:/carga/ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Movimentacoes/2020/Outubro/')
+setwd('D:/carga/ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Movimentacoes/2020/Novembro/')
 
 getwd()
 
@@ -335,6 +348,21 @@ CAGEDMOV <- data.table::fread('CAGEDMOV202010.txt',
                              "indicadoraprendiz","fonte")))
 
 DBI::dbWriteTable(db,"caged_mov_202001_atual",CAGEDMOV,append = TRUE, field.types = columnTypes)
+
+CAGEDMOV <- data.table::fread('CAGEDMOV202011.txt',
+                              encoding=readr::guess_encoding('CAGEDMOV202011.txt')[[1,1]]) %>% 
+   dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao","subclasse",
+                             "saldo","cbo2002ocupacao","categoria","graudeinstrucao",
+                             "idade","horascontratuais","racacor","sexo","tipoempregador",
+                             "tipoestabelecimento","tipomovimentacao","tipodedeficiencia",
+                             "indtrabintermitente","indtrabparcial","salario","tamestabjan",
+                             "indicadoraprendiz","fonte")))
+
+DBI::dbWriteTable(db,"caged_mov_202001_atual",CAGEDMOV,append = TRUE, field.types = columnTypes)
+
+
+
+
 
 DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_competencia] ON [caged].[caged_mov_202001_atual]
                     ([competencia] ASC
