@@ -1,5 +1,11 @@
+#Orientações para carga
+#1 - Em um terminal linux, acesse a pasta onde serão salvos os microdados (cd /mnt/d/carga)
+#2 - Execute o comando wget -r ftp://ftp.mtps.gov.br/pdet/microdados/NOVO%20CAGED/
+#3 - Acesse a estrutura de pastas baixadas. Observe se há alguma pasta/arquivo com caracter não identificado. Se houver corrija
+#4 - Atualize a programação abaixo para o último mês e execute
+
 getwd()
-setwd('D:/carga/ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Estabelecimentos/Setembro/')
+setwd('D:/carga/ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Estabelecimentos/Outubro/')
 library(DBI)
 library(odbc)
 library(tidyverse)
@@ -119,6 +125,15 @@ CAGEDESTAB <- data.table::fread('CAGEDESTAB202009.txt',
 
 DBI::dbWriteTable(db,"caged_est_202001_atual",CAGEDESTAB,append = TRUE, field.types = columnTypes)
 
+CAGEDESTAB <- data.table::fread('CAGEDESTAB202010.txt',
+                                encoding=readr::guess_encoding('CAGEDESTAB202010.txt')[[1,1]]) %>%
+   dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao",
+                             "subclasse","admitidos","desligados","fonte_desl",
+                             "saldo","tipoempregador","tipoestabelecimento",
+                             "tamestabjan")))
+
+DBI::dbWriteTable(db,"caged_est_202001_atual",CAGEDESTAB,append = TRUE, field.types = columnTypes)
+
 DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_competencia] ON [caged].[caged_est_202001_atual]
                     ([competencia] ASC
                     )WITH (PAD_INDEX = OFF, 
@@ -178,7 +193,7 @@ rm(CAGEDESTAB)
 
 
 
-setwd('D:/carga/ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Movimentacoes/2020/Setembro/')
+setwd('D:/carga/ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Movimentacoes/2020/Outubro/')
 
 getwd()
 
@@ -186,7 +201,7 @@ CAGEDMOV <- data.table::fread('CAGEDMOV202001.txt',
                               encoding=readr::guess_encoding('CAGEDMOV202001.txt')[[1,1]]) %>% 
    dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao","subclasse",
                              "saldo","cbo2002ocupacao","categoria","graudeinstrucao",
-                             "idade","horascontratuais","tempoemprego","racacor","sexo","tipoempregador",
+                             "idade","horascontratuais","racacor","sexo","tipoempregador",
                              "tipoestabelecimento","tipomovimentacao","tipodedeficiencia",
                              "indtrabintermitente","indtrabparcial","salario","tamestabjan",
                              "indicadoraprendiz","fonte")))
@@ -212,6 +227,10 @@ columnTypes <- setNames(as.list(x$coltype),names(CAGEDMOV))
 
 columnTypes$saldo <- "float"
 
+db <- DBI::dbConnect(odbc(),'db_codeplan', 
+                     uid = keyring::key_list('teste')[1,2], 
+                     pwd = keyring::key_get('teste', username =  '35866'))
+
 dbExecute(db,"ALTER USER [35866] WITH DEFAULT_SCHEMA = [caged]")
 
 DBI::dbGetQuery(db,"IF OBJECT_ID('caged.caged_mov_202001_atual', 'U') IS NOT NULL DROP TABLE caged.caged_mov_202001_atual")
@@ -224,7 +243,7 @@ CAGEDMOV <- data.table::fread('CAGEDMOV202002.txt',
                               encoding=readr::guess_encoding('CAGEDMOV202002.txt')[[1,1]]) %>% 
    dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao","subclasse",
                              "saldo","cbo2002ocupacao","categoria","graudeinstrucao",
-                             "idade","horascontratuais","tempoemprego","racacor","sexo","tipoempregador",
+                             "idade","horascontratuais","racacor","sexo","tipoempregador",
                              "tipoestabelecimento","tipomovimentacao","tipodedeficiencia",
                              "indtrabintermitente","indtrabparcial","salario","tamestabjan",
                              "indicadoraprendiz","fonte")))
@@ -235,7 +254,7 @@ CAGEDMOV <- data.table::fread('CAGEDMOV202003.txt',
                               encoding=readr::guess_encoding('CAGEDMOV202003.txt')[[1,1]]) %>% 
    dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao","subclasse",
                              "saldo","cbo2002ocupacao","categoria","graudeinstrucao",
-                             "idade","horascontratuais","tempoemprego","racacor","sexo","tipoempregador",
+                             "idade","horascontratuais","racacor","sexo","tipoempregador",
                              "tipoestabelecimento","tipomovimentacao","tipodedeficiencia",
                              "indtrabintermitente","indtrabparcial","salario","tamestabjan",
                              "indicadoraprendiz","fonte")))
@@ -246,7 +265,7 @@ CAGEDMOV <- data.table::fread('CAGEDMOV202004.txt',
                               encoding=readr::guess_encoding('CAGEDMOV202004.txt')[[1,1]]) %>% 
    dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao","subclasse",
                              "saldo","cbo2002ocupacao","categoria","graudeinstrucao",
-                             "idade","horascontratuais","tempoemprego","racacor","sexo","tipoempregador",
+                             "idade","horascontratuais","racacor","sexo","tipoempregador",
                              "tipoestabelecimento","tipomovimentacao","tipodedeficiencia",
                              "indtrabintermitente","indtrabparcial","salario","tamestabjan",
                              "indicadoraprendiz","fonte")))
@@ -257,7 +276,7 @@ CAGEDMOV <- data.table::fread('CAGEDMOV202005.txt',
                               encoding=readr::guess_encoding('CAGEDMOV202005.txt')[[1,1]]) %>% 
    dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao","subclasse",
                              "saldo","cbo2002ocupacao","categoria","graudeinstrucao",
-                             "idade","horascontratuais","tempoemprego","racacor","sexo","tipoempregador",
+                             "idade","horascontratuais","racacor","sexo","tipoempregador",
                              "tipoestabelecimento","tipomovimentacao","tipodedeficiencia",
                              "indtrabintermitente","indtrabparcial","salario","tamestabjan",
                              "indicadoraprendiz","fonte")))
@@ -268,7 +287,7 @@ CAGEDMOV <- data.table::fread('CAGEDMOV202006.txt',
                               encoding=readr::guess_encoding('CAGEDMOV202006.txt')[[1,1]]) %>% 
    dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao","subclasse",
                              "saldo","cbo2002ocupacao","categoria","graudeinstrucao",
-                             "idade","horascontratuais","tempoemprego","racacor","sexo","tipoempregador",
+                             "idade","horascontratuais","racacor","sexo","tipoempregador",
                              "tipoestabelecimento","tipomovimentacao","tipodedeficiencia",
                              "indtrabintermitente","indtrabparcial","salario","tamestabjan",
                              "indicadoraprendiz","fonte")))
@@ -279,7 +298,7 @@ CAGEDMOV <- data.table::fread('CAGEDMOV202007.txt',
                               encoding=readr::guess_encoding('CAGEDMOV202007.txt')[[1,1]]) %>% 
    dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao","subclasse",
                              "saldo","cbo2002ocupacao","categoria","graudeinstrucao",
-                             "idade","horascontratuais","tempoemprego","racacor","sexo","tipoempregador",
+                             "idade","horascontratuais","racacor","sexo","tipoempregador",
                              "tipoestabelecimento","tipomovimentacao","tipodedeficiencia",
                              "indtrabintermitente","indtrabparcial","salario","tamestabjan",
                              "indicadoraprendiz","fonte")))
@@ -290,7 +309,7 @@ CAGEDMOV <- data.table::fread('CAGEDMOV202008.txt',
                               encoding=readr::guess_encoding('CAGEDMOV202008.txt')[[1,1]]) %>% 
    dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao","subclasse",
                              "saldo","cbo2002ocupacao","categoria","graudeinstrucao",
-                             "idade","horascontratuais","tempoemprego","racacor","sexo","tipoempregador",
+                             "idade","horascontratuais","racacor","sexo","tipoempregador",
                              "tipoestabelecimento","tipomovimentacao","tipodedeficiencia",
                              "indtrabintermitente","indtrabparcial","salario","tamestabjan",
                              "indicadoraprendiz","fonte")))
@@ -299,7 +318,18 @@ CAGEDMOV <- data.table::fread('CAGEDMOV202009.txt',
                               encoding=readr::guess_encoding('CAGEDMOV202009.txt')[[1,1]]) %>% 
    dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao","subclasse",
                              "saldo","cbo2002ocupacao","categoria","graudeinstrucao",
-                             "idade","horascontratuais","tempoemprego","racacor","sexo","tipoempregador",
+                             "idade","horascontratuais","racacor","sexo","tipoempregador",
+                             "tipoestabelecimento","tipomovimentacao","tipodedeficiencia",
+                             "indtrabintermitente","indtrabparcial","salario","tamestabjan",
+                             "indicadoraprendiz","fonte")))
+
+DBI::dbWriteTable(db,"caged_mov_202001_atual",CAGEDMOV,append = TRUE, field.types = columnTypes)
+
+CAGEDMOV <- data.table::fread('CAGEDMOV202010.txt',
+                              encoding=readr::guess_encoding('CAGEDMOV202010.txt')[[1,1]]) %>% 
+   dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao","subclasse",
+                             "saldo","cbo2002ocupacao","categoria","graudeinstrucao",
+                             "idade","horascontratuais","racacor","sexo","tipoempregador",
                              "tipoestabelecimento","tipomovimentacao","tipodedeficiencia",
                              "indtrabintermitente","indtrabparcial","salario","tamestabjan",
                              "indicadoraprendiz","fonte")))

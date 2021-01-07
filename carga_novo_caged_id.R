@@ -12,6 +12,7 @@
 #wget --cookies=on --load-cookies cookies.txt --keep-session-cookies --no-check-certificate -m https://mtegovbr.sharepoint.com/:u:/r/sites/Observatrio/Documentos%20Compartilhados/EXTRA%C3%87%C3%83O%20DE%20DADOS/Compartilhamento%20de%20Dados/Dados%20Identificados/NOVO%20CAGED/Estabelecimento/2020/Junho/CAGEDESTAB202006ID.7z
 #wget --cookies=on --load-cookies cookies.txt --keep-session-cookies --no-check-certificate -m https://mtegovbr.sharepoint.com/:u:/r/sites/Observatrio/Documentos%20Compartilhados/EXTRA%C3%87%C3%83O%20DE%20DADOS/Compartilhamento%20de%20Dados/Dados%20Identificados/NOVO%20CAGED/Estabelecimento/2020/Julho/CAGEDESTAB202007ID.7z
 #wget --cookies=on --load-cookies cookies.txt --keep-session-cookies --no-check-certificate -m https://mtegovbr.sharepoint.com/:u:/r/sites/Observatrio/Documentos%20Compartilhados/EXTRA%C3%87%C3%83O%20DE%20DADOS/Compartilhamento%20de%20Dados/Dados%20Identificados/NOVO%20CAGED/Estabelecimento/2020/Agosto/CAGEDESTAB202008ID.7z
+#wget --cookies=on --load-cookies cookies.txt --keep-session-cookies --no-check-certificate -m https://mtegovbr.sharepoint.com/:u:/r/sites/Observatrio/Documentos%20Compartilhados/EXTRA%C3%87%C3%83O%20DE%20DADOS/Compartilhamento%20de%20Dados/Dados%20Identificados/NOVO%20CAGED/Estabelecimento/2020/Setembro/CAGEDESTAB202009ID.7z
 
 #Movimentações
 
@@ -42,6 +43,7 @@
 #wget --cookies=on --load-cookies cookies.txt --keep-session-cookies --no-check-certificate -m https://mtegovbr.sharepoint.com/:u:/r/sites/Observatrio/Documentos%20Compartilhados/EXTRA%C3%87%C3%83O%20DE%20DADOS/Compartilhamento%20de%20Dados/Dados%20Identificados/NOVO%20CAGED/Movimenta%C3%A7%C3%B5es/2020/Agosto/CAGEDMOV202006ID.7z
 #wget --cookies=on --load-cookies cookies.txt --keep-session-cookies --no-check-certificate -m https://mtegovbr.sharepoint.com/:u:/r/sites/Observatrio/Documentos%20Compartilhados/EXTRA%C3%87%C3%83O%20DE%20DADOS/Compartilhamento%20de%20Dados/Dados%20Identificados/NOVO%20CAGED/Movimenta%C3%A7%C3%B5es/2020/Agosto/CAGEDMOV202007ID.7z
 #wget --cookies=on --load-cookies cookies.txt --keep-session-cookies --no-check-certificate -m https://mtegovbr.sharepoint.com/:u:/r/sites/Observatrio/Documentos%20Compartilhados/EXTRA%C3%87%C3%83O%20DE%20DADOS/Compartilhamento%20de%20Dados/Dados%20Identificados/NOVO%20CAGED/Movimenta%C3%A7%C3%B5es/2020/Agosto/CAGEDMOV202008ID.7z
+#wget --cookies=on --load-cookies cookies.txt --keep-session-cookies --no-check-certificate -m https://mtegovbr.sharepoint.com/:u:/r/sites/Observatrio/Documentos%20Compartilhados/EXTRA%C3%87%C3%83O%20DE%20DADOS/Compartilhamento%20de%20Dados/Dados%20Identificados/NOVO%20CAGED/Movimenta%C3%A7%C3%B5es/2020/Setembro/CAGEDMOV202009ID.7z
 
 #5 - Acesse a estrutura de pastas baixadas. Observe se há alguma pasta/arquivo com caracter não identificado. Se houver corrija
 #6 - Atualize a programação abaixo para o último mês e execute
@@ -53,10 +55,6 @@ library(tidyverse)
 rm(list = ls())
 
 keyring::key_set(service = "teste", username = "35866")
-
-db <- DBI::dbConnect(odbc(),'db_codeplan', 
-                     uid = keyring::key_list('teste')[1,2], 
-                     pwd = keyring::key_get('teste', username =  '35866'))
 
 setwd('D:/carga/mtegovbr.sharepoint.com/u/r/sites/Observatrio/Documentos Compartilhados/EXTRAÇÃO DE DADOS/Compartilhamento de Dados/Dados Identificados/NOVO CAGED/Estabelecimento')
 
@@ -76,6 +74,9 @@ CAGEDESTAB202005ID <- data.table::fread('CAGEDESTAB202005ID.txt',
 
 CAGEDESTAB <- dplyr::bind_rows(acumulado202004ID,CAGEDESTAB202005ID)
   
+rm(acumulado202004ID,CAGEDESTAB202005ID)
+
+
 x <- data.frame(type=sapply(CAGEDESTAB, class),
                 nc=unlist(lapply(CAGEDESTAB, function(x) max(nchar(x), na.rm = T))),
                 tm=as.numeric(unlist(lapply(CAGEDESTAB, function(x) max(x, na.rm = T))))) %>%
@@ -97,6 +98,10 @@ columnTypes <- setNames(as.list(x$coltype),names(CAGEDESTAB))
 
 columnTypes$saldo <- "float"
 
+db <- DBI::dbConnect(odbc(),'db_codeplan', 
+                     uid = keyring::key_list('teste')[1,2], 
+                     pwd = keyring::key_get('teste', username =  '35866'))
+
 dbExecute(db,"ALTER USER [35866] WITH DEFAULT_SCHEMA = [caged_id]")
 
 DBI::dbGetQuery(db,"IF OBJECT_ID('caged_id.caged_est_202001_atual', 'U') IS NOT NULL DROP TABLE caged_id.caged_est_202001_atual")
@@ -113,6 +118,10 @@ CAGEDESTAB <- data.table::fread('CAGEDESTAB202005ID.txt',
                             "subclasse","admitidos","desligados","fonte_desl",
                             "saldo","cnpjraiz","cnpjcei","tipoempregador","tipoestabelecimento")))
 
+db <- DBI::dbConnect(odbc(),'db_codeplan', 
+                     uid = keyring::key_list('teste')[1,2], 
+                     pwd = keyring::key_get('teste', username =  '35866'))
+
 DBI::dbWriteTable(db,"caged_est_202001_atual",CAGEDESTAB,append = TRUE, field.types = columnTypes)
 
 setwd('D:/carga/mtegovbr.sharepoint.com/u/r/sites/Observatrio/Documentos Compartilhados/EXTRAÇÃO DE DADOS/Compartilhamento de Dados/Dados Identificados/NOVO CAGED/Estabelecimento/2020/Junho')
@@ -121,7 +130,14 @@ CAGEDESTAB <- data.table::fread('CAGEDESTAB202006ID.txt',
                                 encoding=readr::guess_encoding('CAGEDESTAB202006ID.txt')[[1,1]]) %>%
   dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao",
                             "subclasse","admitidos","desligados","fonte_desl",
-                            "saldo","cnpjraiz","cnpjcei","tipoempregador","tipoestabelecimento")))
+                            "saldo","cnpjraiz","cnpjcei","tipoempregador","tipoestabelecimento",
+                            "tamanhoestabelecimento")))
+
+CAGEDESTAB$tamanhoestabelecimento <- NULL
+
+db <- DBI::dbConnect(odbc(),'db_codeplan', 
+                     uid = keyring::key_list('teste')[1,2], 
+                     pwd = keyring::key_get('teste', username =  '35866'))
 
 DBI::dbWriteTable(db,"caged_est_202001_atual",CAGEDESTAB,append = TRUE, field.types = columnTypes)
 
@@ -131,7 +147,14 @@ CAGEDESTAB <- data.table::fread('CAGEDESTAB202007ID.txt',
                                 encoding=readr::guess_encoding('CAGEDESTAB202007ID.txt')[[1,1]]) %>%
   dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao",
                             "subclasse","admitidos","desligados","fonte_desl",
-                            "saldo","cnpjraiz","cnpjcei","tipoempregador","tipoestabelecimento")))
+                            "saldo","cnpjraiz","cnpjcei","tipoempregador","tipoestabelecimento",
+                            "tamanhoestabelecimento")))
+
+CAGEDESTAB$tamanhoestabelecimento <- NULL
+
+db <- DBI::dbConnect(odbc(),'db_codeplan', 
+                     uid = keyring::key_list('teste')[1,2], 
+                     pwd = keyring::key_get('teste', username =  '35866'))
 
 DBI::dbWriteTable(db,"caged_est_202001_atual",CAGEDESTAB,append = TRUE, field.types = columnTypes)
 
@@ -141,7 +164,31 @@ CAGEDESTAB <- data.table::fread('CAGEDESTAB202008ID.txt',
                                 encoding=readr::guess_encoding('CAGEDESTAB202008ID.txt')[[1,1]]) %>%
   dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao",
                             "subclasse","admitidos","desligados","fonte_desl",
-                            "saldo","cnpjraiz","cnpjcei","tipoempregador","tipoestabelecimento")))
+                            "saldo","cnpjraiz","cnpjcei","tipoempregador","tipoestabelecimento",
+                            "tamanhoestabelecimento")))
+
+CAGEDESTAB$tamanhoestabelecimento <- NULL
+
+db <- DBI::dbConnect(odbc(),'db_codeplan', 
+                     uid = keyring::key_list('teste')[1,2], 
+                     pwd = keyring::key_get('teste', username =  '35866'))
+
+DBI::dbWriteTable(db,"caged_est_202001_atual",CAGEDESTAB,append = TRUE, field.types = columnTypes)
+
+setwd('D:/carga/mtegovbr.sharepoint.com/u/r/sites/Observatrio/Documentos Compartilhados/EXTRAÇÃO DE DADOS/Compartilhamento de Dados/Dados Identificados/NOVO CAGED/Estabelecimento/2020/Setembro')
+
+CAGEDESTAB <- data.table::fread('CAGEDESTAB202009ID.txt',
+                                encoding=readr::guess_encoding('CAGEDESTAB202009ID.txt')[[1,1]]) %>%
+  dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao",
+                            "subclasse","admitidos","desligados","fonte_desl",
+                            "saldo","cnpjraiz","cnpjcei","tipoempregador","tipoestabelecimento",
+                            "tamanhoestabelecimento")))
+
+CAGEDESTAB$tamanhoestabelecimento <- NULL
+
+db <- DBI::dbConnect(odbc(),'db_codeplan', 
+                     uid = keyring::key_list('teste')[1,2], 
+                     pwd = keyring::key_get('teste', username =  '35866'))
 
 DBI::dbWriteTable(db,"caged_est_202001_atual",CAGEDESTAB,append = TRUE, field.types = columnTypes)
 
@@ -238,6 +285,10 @@ columnTypes <- setNames(as.list(x$coltype),names(CAGEDMOV))
 
 columnTypes$saldomovimentacao <- "float"
 
+db <- DBI::dbConnect(odbc(),'db_codeplan', 
+                     uid = keyring::key_list('teste')[1,2], 
+                     pwd = keyring::key_get('teste', username =  '35866'))
+
 dbExecute(db,"ALTER USER [35866] WITH DEFAULT_SCHEMA = [caged_id]")
 
 DBI::dbGetQuery(db,"IF OBJECT_ID('caged_id.caged_mov_202001_atual', 'U') IS NOT NULL DROP TABLE caged_id.caged_mov_202001_atual")
@@ -255,6 +306,10 @@ CAGEDMOV <- data.table::fread('CAGEDMOV202002ID.txt',
                             "indtrabintermitente","indtrabparcial","salario","tamestabjan",
                             "indicadoraprendiz","fonte","nit","datanascimento","diamovimentacao","dataadmissão")))
 
+db <- DBI::dbConnect(odbc(),'db_codeplan', 
+                     uid = keyring::key_list('teste')[1,2], 
+                     pwd = keyring::key_get('teste', username =  '35866'))
+
 DBI::dbWriteTable(db,"caged_mov_202001_atual",CAGEDMOV,append = TRUE, field.types = columnTypes)
 
 CAGEDMOV <- data.table::fread('CAGEDMOV202003ID.txt',
@@ -265,6 +320,10 @@ CAGEDMOV <- data.table::fread('CAGEDMOV202003ID.txt',
                             "tipoestabelecimento","tipomovimentacao","tipodedeficiencia",
                             "indtrabintermitente","indtrabparcial","salario","tamestabjan",
                             "indicadoraprendiz","fonte","nit","datanascimento","diamovimentacao","dataadmissão")))
+
+db <- DBI::dbConnect(odbc(),'db_codeplan', 
+                     uid = keyring::key_list('teste')[1,2], 
+                     pwd = keyring::key_get('teste', username =  '35866'))
 
 DBI::dbWriteTable(db,"caged_mov_202001_atual",CAGEDMOV,append = TRUE, field.types = columnTypes)
 
@@ -277,6 +336,10 @@ CAGEDMOV <- data.table::fread('CAGEDMOV202004ID.txt',
                             "indtrabintermitente","indtrabparcial","salario","tamestabjan",
                             "indicadoraprendiz","fonte","nit","datanascimento","diamovimentacao","dataadmissão")))
 
+db <- DBI::dbConnect(odbc(),'db_codeplan', 
+                     uid = keyring::key_list('teste')[1,2], 
+                     pwd = keyring::key_get('teste', username =  '35866'))
+
 DBI::dbWriteTable(db,"caged_mov_202001_atual",CAGEDMOV,append = TRUE, field.types = columnTypes)
 
 CAGEDMOV <- data.table::fread('CAGEDMOV202005ID.txt',
@@ -287,6 +350,10 @@ CAGEDMOV <- data.table::fread('CAGEDMOV202005ID.txt',
                             "tipoestabelecimento","tipomovimentacao","tipodedeficiencia",
                             "indtrabintermitente","indtrabparcial","salario","tamestabjan",
                             "indicadoraprendiz","fonte","nit","datanascimento","diamovimentacao","dataadmissão")))
+
+db <- DBI::dbConnect(odbc(),'db_codeplan', 
+                     uid = keyring::key_list('teste')[1,2], 
+                     pwd = keyring::key_get('teste', username =  '35866'))
 
 DBI::dbWriteTable(db,"caged_mov_202001_atual",CAGEDMOV,append = TRUE, field.types = columnTypes)
 
@@ -299,6 +366,10 @@ CAGEDMOV <- data.table::fread('CAGEDMOV202006ID.txt',
                             "indtrabintermitente","indtrabparcial","salario","tamestabjan",
                             "indicadoraprendiz","fonte","nit","datanascimento","diamovimentacao","dataadmissão")))
 
+db <- DBI::dbConnect(odbc(),'db_codeplan', 
+                     uid = keyring::key_list('teste')[1,2], 
+                     pwd = keyring::key_get('teste', username =  '35866'))
+
 DBI::dbWriteTable(db,"caged_mov_202001_atual",CAGEDMOV,append = TRUE, field.types = columnTypes)
 
 CAGEDMOV <- data.table::fread('CAGEDMOV202007ID.txt',
@@ -310,6 +381,10 @@ CAGEDMOV <- data.table::fread('CAGEDMOV202007ID.txt',
                             "indtrabintermitente","indtrabparcial","salario","tamestabjan",
                             "indicadoraprendiz","fonte","nit","datanascimento","diamovimentacao","dataadmissão")))
 
+db <- DBI::dbConnect(odbc(),'db_codeplan', 
+                     uid = keyring::key_list('teste')[1,2], 
+                     pwd = keyring::key_get('teste', username =  '35866'))
+
 DBI::dbWriteTable(db,"caged_mov_202001_atual",CAGEDMOV,append = TRUE, field.types = columnTypes)
 
 CAGEDMOV <- data.table::fread('CAGEDMOV202008ID.txt',
@@ -320,6 +395,27 @@ CAGEDMOV <- data.table::fread('CAGEDMOV202008ID.txt',
                             "tipoestabelecimento","tipomovimentacao","tipodedeficiencia",
                             "indtrabintermitente","indtrabparcial","salario","tamestabjan",
                             "indicadoraprendiz","fonte","nit","datanascimento","diamovimentacao","dataadmissão")))
+
+db <- DBI::dbConnect(odbc(),'db_codeplan', 
+                     uid = keyring::key_list('teste')[1,2], 
+                     pwd = keyring::key_get('teste', username =  '35866'))
+
+DBI::dbWriteTable(db,"caged_mov_202001_atual",CAGEDMOV,append = TRUE, field.types = columnTypes)
+
+setwd('D:/carga/mtegovbr.sharepoint.com/u/r/sites/Observatrio/Documentos Compartilhados/EXTRAÇÃO DE DADOS/Compartilhamento de Dados/Dados Identificados/NOVO CAGED/Movimentações/2020/Setembro')
+
+CAGEDMOV <- data.table::fread('CAGEDMOV202009ID.txt',
+                              encoding=readr::guess_encoding('CAGEDMOV202009ID.txt')[[1,1]]) %>% 
+  dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao","subclasse",
+                            "saldomovimentacao","cbo2002ocupacao","cpf","categoria","graudeinstrucao",
+                            "idade","cnpjraiz","cnpjcei","horascontratuais","tempoemprego","racacor","sexo","tipoempregador",
+                            "tipoestabelecimento","tipomovimentacao","tipodedeficiencia",
+                            "indtrabintermitente","indtrabparcial","salario","tamestabjan",
+                            "indicadoraprendiz","fonte","nit","datanascimento","diamovimentacao","dataadmissão")))
+
+db <- DBI::dbConnect(odbc(),'db_codeplan', 
+                     uid = keyring::key_list('teste')[1,2], 
+                     pwd = keyring::key_get('teste', username =  '35866'))
 
 DBI::dbWriteTable(db,"caged_mov_202001_atual",CAGEDMOV,append = TRUE, field.types = columnTypes)
 
