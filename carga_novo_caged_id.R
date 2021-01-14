@@ -44,6 +44,7 @@
 #wget --cookies=on --load-cookies cookies.txt --keep-session-cookies --no-check-certificate -m https://mtegovbr.sharepoint.com/:u:/r/sites/Observatrio/Documentos%20Compartilhados/EXTRA%C3%87%C3%83O%20DE%20DADOS/Compartilhamento%20de%20Dados/Dados%20Identificados/NOVO%20CAGED/Movimenta%C3%A7%C3%B5es/2020/Agosto/CAGEDMOV202007ID.7z
 #wget --cookies=on --load-cookies cookies.txt --keep-session-cookies --no-check-certificate -m https://mtegovbr.sharepoint.com/:u:/r/sites/Observatrio/Documentos%20Compartilhados/EXTRA%C3%87%C3%83O%20DE%20DADOS/Compartilhamento%20de%20Dados/Dados%20Identificados/NOVO%20CAGED/Movimenta%C3%A7%C3%B5es/2020/Agosto/CAGEDMOV202008ID.7z
 #wget --cookies=on --load-cookies cookies.txt --keep-session-cookies --no-check-certificate -m https://mtegovbr.sharepoint.com/:u:/r/sites/Observatrio/Documentos%20Compartilhados/EXTRA%C3%87%C3%83O%20DE%20DADOS/Compartilhamento%20de%20Dados/Dados%20Identificados/NOVO%20CAGED/Movimenta%C3%A7%C3%B5es/2020/Setembro/CAGEDMOV202009ID.7z
+#wget --cookies=on --load-cookies cookies.txt --keep-session-cookies --no-check-certificate -m https://mtegovbr.sharepoint.com/:u:/r/sites/Observatrio/Documentos%20Compartilhados/EXTRA%C3%87%C3%83O%20DE%20DADOS/Compartilhamento%20de%20Dados/Dados%20Identificados/NOVO%20CAGED/Movimenta%C3%A7%C3%B5es/2020/Setembro/CAGEDMOV202009ID.7z
 
 #5 - Acesse a estrutura de pastas baixadas. Observe se há alguma pasta/arquivo com caracter não identificado. Se houver corrija
 #6 - Atualize a programação abaixo para o último mês e execute
