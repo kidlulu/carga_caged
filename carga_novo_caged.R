@@ -1,12 +1,12 @@
 #Orientações para carga dos microdados de estabelecimentos
 #1 - Em um terminal linux, acesse a pasta onde serão salvos os microdados (cd /mnt/d/carga)
 #2 - Remova a pasta existente  (rm -R ftp.mtps.gov.br/)
-#2 - Execute o comando wget -r -l0 --no-parent -A.7z ftp://ftp.mtps.gov.br/pdet/microdados/NOVO%20CAGED/Estabelecimentos/Dezembro/
+#2 - Execute o comando wget -r -l0 --no-parent -A.7z ftp://ftp.mtps.gov.br/pdet/microdados/NOVO%20CAGED/Estabelecimentos/2021/Janeiro/
 #3 - Acesse a estrutura de pastas baixadas. Observe se há alguma pasta/arquivo com caracter não identificado. Se houver corrija
 #4 - Atualize a programação abaixo para o último mês e execute
 
 getwd()
-setwd('D:/carga/ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Estabelecimentos/Dezembro/')
+setwd('D:\\carga\\ftp.mtps.gov.br\\pdet\\microdados\\NOVO CAGED\\Estabelecimentos\\2021\\Janeiro')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202001.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202002.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202003.7z')
@@ -19,6 +19,7 @@ shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202009.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202010.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202011.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202012.7z')
+shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202101.7z')
 
 library(DBI)
 library(odbc)
@@ -166,6 +167,15 @@ CAGEDESTAB <- data.table::fread('CAGEDESTAB202012.txt',
 
 DBI::dbWriteTable(db,"caged_est_202001_atual",CAGEDESTAB,append = TRUE, field.types = columnTypes)
 
+CAGEDESTAB <- data.table::fread('CAGEDESTAB202101.txt',
+                                encoding=readr::guess_encoding('CAGEDESTAB202101')[[1,1]]) %>%
+   dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao",
+                             "subclasse","admitidos","desligados","fonte_desl",
+                             "saldo","tipoempregador","tipoestabelecimento",
+                             "tamestabjan")))
+
+DBI::dbWriteTable(db,"caged_est_202001_atual",CAGEDESTAB,append = TRUE, field.types = columnTypes)
+
 
 
 
@@ -231,12 +241,12 @@ rm(CAGEDESTAB)
 #Orientações para carga dos microdados de estabelecimentos
 #1 - Em um terminal linux, acesse a pasta onde serão salvos os microdados (cd /mnt/d/carga)
 #2 - Remova a pasta existente  (rm -R ftp.mtps.gov.br/)
-#2 - Execute o comando wget -r -l0 --no-parent -A.7z ftp://ftp.mtps.gov.br/pdet/microdados/NOVO%20CAGED/Movimenta%E7%F5es/2020/Dezembro/
+#2 - Execute o comando wget -r -l0 --no-parent -A.7z ftp://ftp.mtps.gov.br/pdet/microdados/NOVO%20CAGED/Movimenta%C3%A7%C3%B5es/2021/Janeiro/
 #3 - Acesse a estrutura de pastas baixadas. Observe se há alguma pasta/arquivo com caracter não identificado. Se houver corrija
 #4 - Atualize a programação abaixo para o último mês e execute
 
 getwd()
-setwd('D:/carga/ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Movimentacoes/2020/Dezembro/')
+setwd('D:\\carga\\ftp.mtps.gov.br\\pdet\\microdados\\NOVO CAGED\\Movimentacoes\\2021\\Janeiro')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202001.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202002.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202003.7z')
@@ -249,6 +259,7 @@ shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202009.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202010.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202011.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202012.7z')
+shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202101.7z')
 
 CAGEDMOV <- data.table::fread('CAGEDMOV202001.txt',
                               encoding=readr::guess_encoding('CAGEDMOV202001.txt')[[1,1]]) %>% 
@@ -402,6 +413,17 @@ DBI::dbWriteTable(db,"caged_mov_202001_atual",CAGEDMOV,append = TRUE, field.type
 
 CAGEDMOV <- data.table::fread('CAGEDMOV202012.txt',
                               encoding=readr::guess_encoding('CAGEDMOV202012.txt')[[1,1]]) %>% 
+   dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao","subclasse",
+                             "saldo","cbo2002ocupacao","categoria","graudeinstrucao",
+                             "idade","horascontratuais","racacor","sexo","tipoempregador",
+                             "tipoestabelecimento","tipomovimentacao","tipodedeficiencia",
+                             "indtrabintermitente","indtrabparcial","salario","tamestabjan",
+                             "indicadoraprendiz","fonte")))
+
+DBI::dbWriteTable(db,"caged_mov_202001_atual",CAGEDMOV,append = TRUE, field.types = columnTypes)
+
+CAGEDMOV <- data.table::fread('CAGEDMOV202101.txt',
+                              encoding=readr::guess_encoding('CAGEDMOV202101.txt')[[1,1]]) %>% 
    dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao","subclasse",
                              "saldo","cbo2002ocupacao","categoria","graudeinstrucao",
                              "idade","horascontratuais","racacor","sexo","tipoempregador",
