@@ -6,7 +6,7 @@
 #4 - Atualize a programação abaixo para o último mês e execute
 
 getwd()
-setwd('D:\\carga\\ftp.mtps.gov.br\\pdet\\microdados\\NOVO CAGED\\Estabelecimentos\\2021\\Janeiro')
+setwd('D:\\carga\\caged\\202101\\')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202001.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202002.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202003.7z')
@@ -168,7 +168,7 @@ CAGEDESTAB <- data.table::fread('CAGEDESTAB202012.txt',
 DBI::dbWriteTable(db,"caged_est_202001_atual",CAGEDESTAB,append = TRUE, field.types = columnTypes)
 
 CAGEDESTAB <- data.table::fread('CAGEDESTAB202101.txt',
-                                encoding=readr::guess_encoding('CAGEDESTAB202101')[[1,1]]) %>%
+                                encoding=readr::guess_encoding('CAGEDESTAB202101.txt')[[1,1]]) %>%
    dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao",
                              "subclasse","admitidos","desligados","fonte_desl",
                              "saldo","tipoempregador","tipoestabelecimento",
@@ -179,7 +179,7 @@ DBI::dbWriteTable(db,"caged_est_202001_atual",CAGEDESTAB,append = TRUE, field.ty
 
 
 
-DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_competencia] ON [caged].[caged_est_202001_atual]
+DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_competencia] ON [caged_est_202001_atual]
                     ([competencia] ASC
                     )WITH (PAD_INDEX = OFF, 
                            STATISTICS_NORECOMPUTE = OFF, 
@@ -190,7 +190,7 @@ DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_competencia] ON [caged].[cage
                     	   ALLOW_PAGE_LOCKS = ON) 
                     ON [PRIMARY]")
 
-DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_uf] ON [caged].[caged_est_202001_atual]
+DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_uf] ON [caged_est_202001_atual]
                     ([uf] ASC
                     )WITH (PAD_INDEX = OFF, 
                            STATISTICS_NORECOMPUTE = OFF, 
@@ -201,7 +201,7 @@ DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_uf] ON [caged].[caged_est_202
                     	   ALLOW_PAGE_LOCKS = ON) 
                     ON [PRIMARY]")
 
-DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_municipio] ON [caged].[caged_est_202001_atual]
+DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_municipio] ON [caged_est_202001_atual]
                     ([municipio] ASC
                     )WITH (PAD_INDEX = OFF, 
                            STATISTICS_NORECOMPUTE = OFF, 
@@ -214,6 +214,7 @@ DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_municipio] ON [caged].[caged_
 
 rm(CAGEDESTAB)
 
+shell('del *.txt')
 
 
 
@@ -246,7 +247,7 @@ rm(CAGEDESTAB)
 #4 - Atualize a programação abaixo para o último mês e execute
 
 getwd()
-setwd('D:\\carga\\ftp.mtps.gov.br\\pdet\\microdados\\NOVO CAGED\\Movimentacoes\\2021\\Janeiro')
+setwd('D:\\carga\\caged\\202101\\')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202001.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202002.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202003.7z')
@@ -260,6 +261,10 @@ shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202010.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202011.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202012.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202101.7z')
+
+db <- DBI::dbConnect(odbc(),'db_codeplan', 
+                     uid = keyring::key_list('teste')[1,2], 
+                     pwd = keyring::key_get('teste', username =  '35866'))
 
 CAGEDMOV <- data.table::fread('CAGEDMOV202001.txt',
                               encoding=readr::guess_encoding('CAGEDMOV202001.txt')[[1,1]]) %>% 
@@ -290,10 +295,6 @@ x <- data.frame(type=sapply(CAGEDMOV, class),
 columnTypes <- setNames(as.list(x$coltype),names(CAGEDMOV))
 
 columnTypes$saldo <- "float"
-
-db <- DBI::dbConnect(odbc(),'db_codeplan', 
-                     uid = keyring::key_list('teste')[1,2], 
-                     pwd = keyring::key_get('teste', username =  '35866'))
 
 dbExecute(db,"ALTER USER [35866] WITH DEFAULT_SCHEMA = [caged]")
 
@@ -437,7 +438,7 @@ DBI::dbWriteTable(db,"caged_mov_202001_atual",CAGEDMOV,append = TRUE, field.type
 
 
 
-DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_competencia] ON [caged].[caged_mov_202001_atual]
+DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_competencia] ON [caged_mov_202001_atual]
                     ([competencia] ASC
                     )WITH (PAD_INDEX = OFF, 
                            STATISTICS_NORECOMPUTE = OFF, 
@@ -448,7 +449,7 @@ DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_competencia] ON [caged].[cage
                     	   ALLOW_PAGE_LOCKS = ON) 
                     ON [PRIMARY]")
 
-DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_uf] ON [caged].[caged_mov_202001_atual]
+DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_uf] ON [caged_mov_202001_atual]
                     ([uf] ASC
                     )WITH (PAD_INDEX = OFF, 
                            STATISTICS_NORECOMPUTE = OFF, 
@@ -459,7 +460,7 @@ DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_uf] ON [caged].[caged_mov_202
                     	   ALLOW_PAGE_LOCKS = ON) 
                     ON [PRIMARY]")
 
-DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_municipio] ON [caged].[caged_mov_202001_atual]
+DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_municipio] ON [caged_mov_202001_atual]
                     ([municipio] ASC
                     )WITH (PAD_INDEX = OFF, 
                            STATISTICS_NORECOMPUTE = OFF, 
@@ -471,3 +472,5 @@ DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_municipio] ON [caged].[caged_
                     ON [PRIMARY]")
 
 rm(list = ls())
+
+shell('del *.txt')
