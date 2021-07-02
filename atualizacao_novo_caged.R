@@ -22,12 +22,10 @@ DBI::dbGetQuery(db,"DROP INDEX IF EXISTS [idx_competencia] ON [caged_est_202001_
 DBI::dbGetQuery(db,"DROP INDEX IF EXISTS [idx_uf] ON [caged_est_202001_atual]")
 DBI::dbGetQuery(db,"DROP INDEX IF EXISTS [idx_municipio] ON [caged_est_202001_atual]")
 
-DBI::dbGetQuery(db,"DELETE FROM [caged_est_202001_atual] WHERE competencia > 202001")
+DBI::dbGetQuery(db,"DELETE FROM [caged_est_202001_atual] WHERE competencia > 202003")
 
 getwd()
-setwd('D:\\carga\\caged\\202102\\')
-shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202002.7z')
-shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202003.7z')
+setwd('D:\\carga\\caged\\202104\\')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202004.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202005.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202006.7z')
@@ -39,24 +37,8 @@ shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202011.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202012.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202101.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202102.7z')
-
-CAGEDESTAB <- data.table::fread('CAGEDESTAB202002.txt',
-                                encoding=readr::guess_encoding('CAGEDESTAB202002.txt')[[1,1]]) %>%
-  dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao",
-                            "subclasse","admitidos","desligados","fonte_desl",
-                            "saldo","tipoempregador","tipoestabelecimento",
-                            "tamestabjan")))
-
-DBI::dbWriteTable(db,"caged_est_202001_atual",CAGEDESTAB,append = TRUE, field.types = columnTypes)
-
-CAGEDESTAB <- data.table::fread('CAGEDESTAB202003.txt',
-                                encoding=readr::guess_encoding('CAGEDESTAB202003.txt')[[1,1]]) %>%
-  dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao",
-                            "subclasse","admitidos","desligados","fonte_desl",
-                            "saldo","tipoempregador","tipoestabelecimento",
-                            "tamestabjan")))
-
-DBI::dbWriteTable(db,"caged_est_202001_atual",CAGEDESTAB,append = TRUE, field.types = columnTypes)
+shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202103.7z')
+shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDESTAB202104.7z')
 
 CAGEDESTAB <- data.table::fread('CAGEDESTAB202004.txt',
                                 encoding=readr::guess_encoding('CAGEDESTAB202004.txt')[[1,1]]) %>%
@@ -157,6 +139,26 @@ CAGEDESTAB <- data.table::fread('CAGEDESTAB202102.txt',
 
 DBI::dbWriteTable(db,"caged_est_202001_atual",CAGEDESTAB,append = TRUE, field.types = columnTypes)
 
+CAGEDESTAB <- data.table::fread('CAGEDESTAB202103.txt',
+                                encoding=readr::guess_encoding('CAGEDESTAB202103.txt')[[1,1]]) %>%
+  dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao",
+                            "subclasse","admitidos","desligados","fonte_desl",
+                            "saldo","tipoempregador","tipoestabelecimento",
+                            "tamestabjan")))
+
+DBI::dbWriteTable(db,"caged_est_202001_atual",CAGEDESTAB,append = TRUE, field.types = columnTypes)
+
+
+DBI::dbWriteTable(db,"caged_est_202001_atual",CAGEDESTAB,append = TRUE, field.types = columnTypes)
+
+CAGEDESTAB <- data.table::fread('CAGEDESTAB202104.txt',
+                                encoding=readr::guess_encoding('CAGEDESTAB202104.txt')[[1,1]]) %>%
+  dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao",
+                            "subclasse","admitidos","desligados","fonte_desl",
+                            "saldo","tipoempregador","tipoestabelecimento",
+                            "tamestabjan")))
+
+DBI::dbWriteTable(db,"caged_est_202001_atual",CAGEDESTAB,append = TRUE, field.types = columnTypes)
 
 
 DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_competencia] ON [caged_est_202001_atual]
@@ -210,10 +212,8 @@ DBI::dbGetQuery(db,"DROP INDEX IF EXISTS [idx_competencia] ON [caged_mov_202001_
 DBI::dbGetQuery(db,"DROP INDEX IF EXISTS [idx_uf] ON [caged_mov_202001_atual]")
 DBI::dbGetQuery(db,"DROP INDEX IF EXISTS [idx_municipio] ON [caged_mov_202001_atual]")
 
-DBI::dbGetQuery(db,"DELETE FROM [caged_mov_202001_atual] WHERE competencia > 202001")
+DBI::dbGetQuery(db,"DELETE FROM [caged_mov_202001_atual] WHERE competencia > 202003")
 
-shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202002.7z')
-shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202003.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202004.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202005.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202006.7z')
@@ -225,28 +225,8 @@ shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202011.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202012.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202101.7z')
 shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202102.7z')
-
-CAGEDMOV <- data.table::fread('CAGEDMOV202002.txt',
-                              encoding=readr::guess_encoding('CAGEDMOV202002.txt')[[1,1]]) %>% 
-  dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao","subclasse",
-                            "saldo","cbo2002ocupacao","categoria","graudeinstrucao",
-                            "idade","horascontratuais","racacor","sexo","tipoempregador",
-                            "tipoestabelecimento","tipomovimentacao","tipodedeficiencia",
-                            "indtrabintermitente","indtrabparcial","salario","tamestabjan",
-                            "indicadoraprendiz","fonte")))
-
-DBI::dbWriteTable(db,"caged_mov_202001_atual",CAGEDMOV,append = TRUE, field.types = columnTypes)
-
-CAGEDMOV <- data.table::fread('CAGEDMOV202003.txt',
-                              encoding=readr::guess_encoding('CAGEDMOV202003.txt')[[1,1]]) %>% 
-  dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao","subclasse",
-                            "saldo","cbo2002ocupacao","categoria","graudeinstrucao",
-                            "idade","horascontratuais","racacor","sexo","tipoempregador",
-                            "tipoestabelecimento","tipomovimentacao","tipodedeficiencia",
-                            "indtrabintermitente","indtrabparcial","salario","tamestabjan",
-                            "indicadoraprendiz","fonte")))
-
-DBI::dbWriteTable(db,"caged_mov_202001_atual",CAGEDMOV,append = TRUE, field.types = columnTypes)
+shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202003.7z')
+shell('"C:\\Program Files\\7-Zip\\7z.exe" e -y CAGEDMOV202104.7z')
 
 CAGEDMOV <- data.table::fread('CAGEDMOV202004.txt',
                               encoding=readr::guess_encoding('CAGEDMOV202004.txt')[[1,1]]) %>% 
@@ -367,9 +347,27 @@ CAGEDMOV <- data.table::fread('CAGEDMOV202102.txt',
 
 DBI::dbWriteTable(db,"caged_mov_202001_atual",CAGEDMOV,append = TRUE, field.types = columnTypes)
 
+CAGEDMOV <- data.table::fread('CAGEDMOV202103.txt',
+                              encoding=readr::guess_encoding('CAGEDMOV202103.txt')[[1,1]]) %>% 
+  dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao","subclasse",
+                            "saldo","cbo2002ocupacao","categoria","graudeinstrucao",
+                            "idade","horascontratuais","racacor","sexo","tipoempregador",
+                            "tipoestabelecimento","tipomovimentacao","tipodedeficiencia",
+                            "indtrabintermitente","indtrabparcial","salario","tamestabjan",
+                            "indicadoraprendiz","fonte")))
 
+DBI::dbWriteTable(db,"caged_mov_202001_atual",CAGEDMOV,append = TRUE, field.types = columnTypes)
 
+CAGEDMOV <- data.table::fread('CAGEDMOV202104.txt',
+                              encoding=readr::guess_encoding('CAGEDMOV202104.txt')[[1,1]]) %>% 
+  dplyr::rename_all(list(~c("competencia","regiao","uf","municipio","secao","subclasse",
+                            "saldo","cbo2002ocupacao","categoria","graudeinstrucao",
+                            "idade","horascontratuais","racacor","sexo","tipoempregador",
+                            "tipoestabelecimento","tipomovimentacao","tipodedeficiencia",
+                            "indtrabintermitente","indtrabparcial","salario","tamestabjan",
+                            "indicadoraprendiz","fonte")))
 
+DBI::dbWriteTable(db,"caged_mov_202001_atual",CAGEDMOV,append = TRUE, field.types = columnTypes)
 
 DBI::dbGetQuery(db,"CREATE NONCLUSTERED INDEX [idx_competencia] ON [caged_mov_202001_atual]
                     ([competencia] ASC
