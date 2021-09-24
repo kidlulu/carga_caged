@@ -221,19 +221,19 @@ CREATE TABLE tmp2(
 COMMIT TRANSACTION;
 
 BEGIN TRANSACTION;
-BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Marco\CAGEDMOV202003.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
-BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Marco\CAGEDMOV202004.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
-BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Marco\CAGEDMOV202005.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
-BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Marco\CAGEDMOV202006.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
-BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Marco\CAGEDMOV202007.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
-BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Marco\CAGEDMOV202008.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
-BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Marco\CAGEDMOV202009.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
-BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Marco\CAGEDMOV202010.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
-BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Marco\CAGEDMOV202011.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
-BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Marco\CAGEDMOV202012.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
-BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Marco\CAGEDMOV202101.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
-BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Marco\CAGEDMOV202102.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
-BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Marco\CAGEDMOV202103.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Março\CAGEDMOV202003.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Março\CAGEDMOV202004.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Março\CAGEDMOV202005.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Março\CAGEDMOV202006.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Março\CAGEDMOV202007.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Março\CAGEDMOV202008.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Março\CAGEDMOV202009.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Março\CAGEDMOV202010.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Março\CAGEDMOV202011.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Março\CAGEDMOV202012.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Março\CAGEDMOV202101.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Março\CAGEDMOV202102.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Março\CAGEDMOV202103.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
 COMMIT TRANSACTION;
 
 BEGIN TRANSACTION;
@@ -556,3 +556,100 @@ BEGIN TRANSACTION;
 IF OBJECT_ID('tmp2', 'U') IS NOT NULL DROP TABLE tmp2; 
 COMMIT TRANSACTION;
 
+
+
+
+
+
+
+
+
+
+
+
+BEGIN TRANSACTION;
+IF OBJECT_ID('tmp2', 'U') IS NOT NULL DROP TABLE tmp2; 
+COMMIT TRANSACTION;
+
+BEGIN TRANSACTION;
+CREATE TABLE tmp2(
+ competencia varchar(max) null,
+ regiao varchar(max) null,
+ uf varchar(max) null,
+ municipio varchar(max) null,
+ secao varchar(max) null,
+ subclasse varchar(max) null,
+ saldomovimentacao varchar(max) null,
+ cbo2002ocupacao varchar(max) null,
+ categoria varchar(max) null,
+ graudeinstrucao varchar(max) null,
+ idade varchar(max) null,
+ horascontratuais varchar(max) null,
+ racacor varchar(max) null,
+ sexo varchar(max) null,
+ tipoempregador varchar(max) null,
+ tipoestabelecimento varchar(max) null,
+ tipomovimentacao varchar(max) null,
+ tipodedeficiencia varchar(max) null,
+ indtrabintermitente varchar(max) null,
+ indtrabparcial varchar(max) null,
+ salario varchar(max) null,
+ tamestabjan varchar(max) null,
+ indicadoraprendiz varchar(max) null,
+ fonte varchar(max) null
+) ON [PRIMARY];
+COMMIT TRANSACTION;
+
+BEGIN TRANSACTION;
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Julho\CAGEDMOV202007.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Julho\CAGEDMOV202008.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Julho\CAGEDMOV202009.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Julho\CAGEDMOV202010.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Julho\CAGEDMOV202011.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Julho\CAGEDMOV202012.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Julho\CAGEDMOV202101.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Julho\CAGEDMOV202102.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Julho\CAGEDMOV202103.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Julho\CAGEDMOV202104.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Julho\CAGEDMOV202105.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Julho\CAGEDMOV202106.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+BULK INSERT tmp2 FROM '\\10.73.53.224\carga\caged\Movimentacoes\2021\Julho\CAGEDMOV202107.txt' WITH (FORMAT = 'CSV', FIELDTERMINATOR=';', FIRSTROW=2, codepage=1252, FIELDQUOTE = '"');
+COMMIT TRANSACTION;
+
+BEGIN TRANSACTION;
+DELETE FROM [caged_vinc_202001_atual] WHERE competencia >= 202007;
+COMMIT TRANSACTION;
+
+BEGIN TRANSACTION;
+insert into caged_vinc_202001_atual
+select
+ cast(categoria as int) as categoria,
+ cast(cbo2002ocupacao as bigint) as cbo2002ocupacao,
+ cast(competencia as int) as competencia,
+ cast(fonte as smallint) as fonte,
+ cast(graudeinstrucao as smallint) as graudeinstrucao,
+ cast(horascontratuais as smallint) as horascontratuais,
+ cast(idade as smallint) as idade,
+ cast(indicadoraprendiz as smallint) as indicadoraprendiz,
+ cast(indtrabintermitente as smallint) as indtrabintermitente,
+ cast(indtrabparcial as smallint) as indtrabparcial,
+ cast(municipio as int) as municipio,
+ cast(racacor as smallint) as racacor,
+ cast(regiao as smallint) as regiao,
+ cast(salario as float) as salario,
+ cast(saldomovimentacao as smallint) as saldomovimentacao,
+ cast(secao as nchar(1)) as secao,
+ cast(sexo as smallint) as sexo,
+ cast(subclasse as int) as subclasse,
+ cast(tamestabjan as smallint) as tamestabjan,
+ cast(tipodedeficiencia as smallint) as tipodedeficiencia,
+ cast(tipoempregador as smallint) as tipoempregador,
+ cast(tipoestabelecimento as smallint) as tipoestabelecimento,
+ cast(tipomovimentacao as smallint) as tipomovimentacao,
+ cast(uf as smallint) as uf
+from tmp2;
+COMMIT TRANSACTION;
+
+BEGIN TRANSACTION;
+IF OBJECT_ID('tmp2', 'U') IS NOT NULL DROP TABLE tmp2; 
+COMMIT TRANSACTION;
